@@ -1,0 +1,29 @@
+{
+    "name":"abhinav Mehta",
+    "email":"abhinavmehta801@gmail.com",
+    "payout":{
+        "provider":"paypal",
+        "user_id":"abhinavmehtapaypal@gmail.com"
+    },
+    "address":{
+        "street":"1234 Main St",
+        "city":"Anytown",
+        "state":"CA",
+        "zip":"90210"
+    },
+    "phone":"(123) 456-7890",
+    "tasks_completed":[
+        {
+            "id":1,
+            "name":"Tasks 1",
+            "date":"2017-01-01",
+            "payout_status":"completed"
+        },{
+            "id":2,
+            "name":"Tasks 2",
+            "date":"2017-01-01",
+            "payout_status":"completed"
+        }
+    ]
+
+}

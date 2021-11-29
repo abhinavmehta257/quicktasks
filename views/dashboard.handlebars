@@ -1,0 +1,35 @@
+      <div class="col-lg-12 grid-margin stretch-card mt-4">
+                <div class="card">
+                  <div class="card-body">
+                    </p>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Address</th>
+                          <th>phone</th>
+                          <th>Categories</th>
+                          <th>Website</th>
+                          <th>Yelp URL</th>
+                          <th>Year in business</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {{#each listing}}
+                        <tr>
+                          <td>{{this.name}}</td>
+                          <td>{{this.address}}</td>
+                          <td>{{this.categories}}</td>
+                          <td>{{this.website}}</td>
+                          <td>{{this.ypURL}}</td>
+                          <td>{{this.years_in_business}}</td>
+                        </tr>
+                        {{/each}}
+
+                <a type="button" class="btn btn-gradient-info" href="/file/{{filename}}">Info</a>
+                  </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+    </div>

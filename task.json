@@ -1,0 +1,10 @@
+{
+    "id":1,
+    "name":"task 1",
+    "description":"description 1",
+    "required_quantity":100,
+    "completed_quantity":67,
+    "form_link":"https://www.form.google.com",
+    "payout_status":"pending",
+    "prize_amount":100
+}

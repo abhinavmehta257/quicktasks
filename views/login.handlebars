@@ -1,0 +1,81 @@
+<div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth">
+          <div class="row flex-grow">
+            <div class="col-lg-4 mx-auto">
+              <div class="auth-form-light text-left p-5">
+                <div class="brand-logo">
+                  <img src="./assets/images/logo.svg">
+                </div>
+                <h4>Hello! let's get started</h4>
+                <h6 class="font-weight-light">Sign in to continue.</h6>
+                <p id="error" style="color: red;"></p>
+                <form class="pt-3">
+                  <div class="form-group">
+                    <input type="email" name="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class="mt-3">
+                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" onclick="postData(this)">SIGN IN</a>
+                  </div>
+                  <div class="my-2 d-flex justify-content-between align-items-center">
+                    <div class="form-check">
+                      <label class="form-check-label text-muted">
+                        <input type="checkbox" class="form-check-input"> Keep me signed in </label>
+                    </div>
+                    <a href="#" class="auth-link text-black">Forgot password?</a>
+                  </div>
+                  <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="/register" class="text-primary">Create</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <script>
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    fail = function(res){
+        console.log(res);
+        //$('.login-btn').html(`Login`);
+    }
+   success = function(res){
+       token = post.getResponseHeader('auth-token');
+       setCookie('authentication',token,3);
+       console.log(res);
+       location.replace("/dashboard");
+       
+    }
+	function postData(btn){
+		userEmail = document.querySelector('input[name="email"]').value;
+		userPassword = document.querySelector('input[name="password"]').value;
+    btn.innerText = "Loading..."
+    btn.disabled = true;
+		let data = {email:userEmail, password:userPassword};
+
+      post =  $.ajax({
+                type: "POST",
+                url: '/login',
+                data: data,
+                success: success,
+            }).fail(function(res){
+              btn.innerText = "SIGN IN";
+              btn.disabled = false;
+              document.getElementById("error").innerText = res.responseText;
+              console.log(res)
+            })                                                                                 
+	}
+</script>
